@@ -20,6 +20,10 @@ export default function Entrance() {
                     colors={['rgb(34,193,195)', 'transparent']}
                     style={styles.background}
                 >
+                    <Image
+                       style={styles.logo}
+                       source={require('../../../assets/logo.png')}
+                    />
                     <TextInput
                         style={styles.input}
                         placeholder='insira seu CPF'
@@ -45,11 +49,7 @@ export default function Entrance() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // padding: 32,
-        // gap: 16,
         backgroundColor: 'orange',
-        // alignItems: 'center',
-        // justifyContent: 'center',
     },
     background: {
         position: 'absolute',
@@ -57,11 +57,15 @@ const styles = StyleSheet.create({
         right: 0,
         top: 0,
         height: 700,
-        // alignItems: 'center',
         justifyContent: 'center',
         padding: 32,
         flex: 1,
         gap: 16,
+    },
+    logo: {
+        width: '20%',
+        height: '20%',
+        alignSelf: 'center'
     },
     input: {
         height: 54,
