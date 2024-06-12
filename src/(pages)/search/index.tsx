@@ -3,10 +3,11 @@ import { StatusBar } from 'expo-status-bar';
 import { Image, Button, StyleSheet, View, TextInput } from 'react-native';
 import { useState } from 'react';
 
-export default function Entrance() {
+export default function Seacher() {
 
     const [cpf, setCpf] = useState("")
-    const [voucher, setVoucher] = useState("")
+    const [data, setData] = useState("")
+    const [codigo, setCodigo] = useState("")
 
     function handleSave() {
         console.log("pressionado");
@@ -21,8 +22,8 @@ export default function Entrance() {
                     style={styles.background}
                 >
                     <Image
-                       style={styles.logo}
-                       source={require('../../../assets/logo.png')}
+                        style={styles.logo}
+                        source={require('../../../assets/logo.png')}
                     />
                     <TextInput
                         style={styles.input}
@@ -31,8 +32,13 @@ export default function Entrance() {
                     />
                     <TextInput
                         style={styles.input}
-                        placeholder='insira seu voucher'
-                        onChangeText={setVoucher}
+                        placeholder='insira a data da consulta'
+                        onChangeText={setData}
+                    />
+                    <TextInput
+                        style={styles.input}
+                        placeholder='insira o código recebido na mensagem'
+                        onChangeText={setCodigo}
                     />
                     <Button
                         title="Enviar"
