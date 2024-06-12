@@ -1,11 +1,10 @@
-import { LinearGradient } from 'expo-linear-gradient';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import Insert from './src/(pages)/insert';
 import Seacher from './src/(pages)/search';
 
 export default function App() {
   return (
     <>
+      {/* <Insert /> */}
       <Seacher />
     </>
   );

@@ -1,6 +1,6 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
-import { Image, Button, StyleSheet, View, TextInput } from 'react-native';
+import { Image, Button, StyleSheet, View, Text, TextInput } from 'react-native';
 import { useState } from 'react';
 
 export default function Seacher() {
@@ -25,6 +25,11 @@ export default function Seacher() {
                         style={styles.logo}
                         source={require('../../../assets/logo.png')}
                     />
+                    <Text
+                        style={styles.titulo}
+                    >
+                        Cashback Clinique
+                    </Text>
                     <TextInput
                         style={styles.input}
                         placeholder='insira seu CPF'
@@ -72,6 +77,11 @@ const styles = StyleSheet.create({
         width: '20%',
         height: '20%',
         alignSelf: 'center'
+    },
+    titulo:{
+        fontSize: 36,
+        textAlign: 'center',
+        fontWeight: 'bold',
     },
     input: {
         height: 54,
