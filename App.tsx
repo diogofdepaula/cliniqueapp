@@ -4,8 +4,8 @@ import Seacher from './src/(pages)/search';
 export default function App() {
   return (
     <>
-      {/* <Insert /> */}
-      <Seacher />
+      <Insert />
+      {/* <Seacher /> */}
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 // type Atendimento = {
 //     cpf: string,
@@ -37,7 +37,11 @@ export default function Insert() {
                         style={styles.logo}
                         source={require('../../../assets/logo.png')}
                     />
-                    <Text>Adicionar atendimento realizado</Text>
+                    <Text
+                        style={styles.titulo}
+                    >
+                        Adicionar atendimento realizado
+                    </Text>
                     <TextInput
                         style={styles.input}
                         placeholder='insira seu CPF'
@@ -50,18 +54,24 @@ export default function Insert() {
                     />
                     <TextInput
                         style={styles.input}
-                        placeholder='insira o código recebido na mensagem'
+                        placeholder='profissional que gerado atendimento'
                         onChangeText={setGerador}
                     />
                     <TextInput
                         style={styles.input}
-                        placeholder='insira o código recebido na mensagem'
+                        placeholder='valor pago pelo paciente'
                         onChangeText={setValor}
                     />
-                    <Button
-                        title="Enviar"
-                        onPress={handleSave}
-                    />
+                    <TouchableOpacity
+                        style={styles.button}
+                    // onPress={onPress}
+                    >
+                        <Text
+                            style={styles.textbutton}
+                        >
+                            ENVIAR
+                        </Text>
+                    </TouchableOpacity>
                     <StatusBar style="auto" />
                 </LinearGradient>
             </View>
@@ -91,11 +101,27 @@ const styles = StyleSheet.create({
         height: '20%',
         alignSelf: 'center'
     },
+    titulo: {
+        fontSize: 36,
+        textAlign: 'center',
+        fontWeight: 'bold',
+    },
     input: {
         height: 54,
         borderWidth: 1,
         borderRadius: 7,
         borderColor: "#999",
         paddingHorizontal: 16,
+    },
+    button: {
+        alignItems: 'center',
+        backgroundColor: 'rgb(33, 150, 243)',
+        padding: 10,
+        borderRadius: 3,
+    },
+    textbutton: {
+        fontSize: 14,
+        textAlign: 'center',
+        color: 'white'
     }
 });
