@@ -17,12 +17,18 @@ import { Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } fr
 export default function Insert() {
 
     const [cpf, setCpf] = useState("")
-    const [data, setData] = useState("")
+    const [dia, setDia] = useState("")
     const [gerador, setGerador] = useState("")
     const [valor, setValor] = useState("")
 
-    function handleSave() {
-        console.log("pressionado");
+    function handleSend() {
+        const data = {
+            cpf, 
+            dia,
+            gerador, 
+            valor 
+        }
+        console.log(data);
     }
 
     return (
@@ -50,7 +56,7 @@ export default function Insert() {
                     <TextInput
                         style={styles.input}
                         placeholder='insira a data da consulta'
-                        onChangeText={setData}
+                        onChangeText={setDia}
                     />
                     <TextInput
                         style={styles.input}
@@ -64,7 +70,7 @@ export default function Insert() {
                     />
                     <TouchableOpacity
                         style={styles.button}
-                    // onPress={onPress}
+                         onPress={handleSend}
                     >
                         <Text
                             style={styles.textbutton}
