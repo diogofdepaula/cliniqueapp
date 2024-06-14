@@ -1,7 +1,8 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Controller, useForm } from "react-hook-form";
+import { Image, StyleSheet, Text, TextInput, Pressable, View } from 'react-native';
 
 // type Atendimento = {
 //     cpf: string,
@@ -16,18 +17,12 @@ import { Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } fr
 // do paciente no BD, para que seja gerado a voucher
 export default function Insert() {
 
-    const [cpf, setCpf] = useState("")
-    const [dia, setDia] = useState("")
-    const [gerador, setGerador] = useState("")
-    const [valor, setValor] = useState("")
-
-    function handleSend() {
-        const data = {
-            cpf, 
-            dia,
-            gerador, 
-            valor 
-        }
+    const { control, register, handleSubmit, watch, formState: { errors } } = useForm<TextInput>();
+   
+    function handleSend(data: any) {
+         // const handleSend: SubmitHandler<Inputs> = data => console.log(data);
+        // assim que está na documentação
+        // https://www.youtube.com/watch?v=FPP7f5IbxNU
         console.log(data);
     }
 
@@ -48,36 +43,72 @@ export default function Insert() {
                     >
                         Adicionar atendimento realizado
                     </Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder='insira seu CPF'
-                        onChangeText={setCpf}
+                    <Controller
+                        control={control}
+                        name="cpf"
+                        render={({
+                            field: { onChange, onBlur, value },
+                        }) => (
+                            <TextInput
+                                style={styles.input}
+                                placeholder='insira seu CPF'
+                                onChangeText={onChange}
+                                onBlur={onBlur}
+                            />
+                        )}
                     />
-                    <TextInput
-                        style={styles.input}
-                        placeholder='insira a data da consulta'
-                        onChangeText={setDia}
+                    <Controller
+                        control={control}
+                        name="dia"
+                        render={({
+                            field: { onChange, onBlur, value },
+                        }) => (
+                            <TextInput
+                                style={styles.input}
+                                placeholder='insira a data da consulta'
+                                onChangeText={onChange}
+                                onBlur={onBlur}
+                            />
+                        )}
                     />
-                    <TextInput
-                        style={styles.input}
-                        placeholder='profissional que gerado atendimento'
-                        onChangeText={setGerador}
+                    <Controller
+                        control={control}
+                        name="gerador"
+                        render={({
+                            field: { onChange, onBlur, value },
+                        }) => (
+                            <TextInput
+                                style={styles.input}
+                                placeholder='profissional que gerado atendimento'
+                                onChangeText={onChange}
+                                onBlur={onBlur}
+                            />
+                        )}
                     />
-                    <TextInput
-                        style={styles.input}
-                        placeholder='valor pago pelo paciente'
-                        onChangeText={setValor}
-                    />
-                    <TouchableOpacity
+                    <Controller
+                        control={control}
+                        name="valor"
+                        render={({
+                            field: { onChange, onBlur, value },
+                        }) => (
+                            <TextInput
+                                style={styles.input}
+                                placeholder='valor pago pelo paciente'
+                                onChangeText={onChange}
+                                onBlur={onBlur}
+                            />
+                        )}
+                    /> 
+                    <Pressable
                         style={styles.button}
-                         onPress={handleSend}
+                        onPress={handleSubmit(handleSend)}
                     >
                         <Text
                             style={styles.textbutton}
                         >
                             ENVIAR
                         </Text>
-                    </TouchableOpacity>
+                    </Pressable>
                     <StatusBar style="auto" />
                 </LinearGradient>
             </View>
@@ -108,7 +139,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     titulo: {
-        fontSize: 36,
+        fontSize: 24,
         textAlign: 'center',
         fontWeight: 'bold',
     },
